@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}JobCategories index{% endblock %}
+
+{% block body %}
+    <h1>JobCategories index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>JobCategory</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for job_category in job_categories %}
+            <tr>
+                <td>{{ job_category.id }}</td>
+                <td>{{ job_category.jobCategory }}</td>
+                <td>
+                    <a href="{{ path('job_categories_show', {'id': job_category.id}) }}">show</a>
+                    <a href="{{ path('job_categories_edit', {'id': job_category.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('job_categories_new') }}">Create new</a>
+{% endblock %}
